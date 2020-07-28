@@ -28,4 +28,4 @@ inputs:
 runs:
   using: "docker"
   image: "cifuzz/cictl"
-  entrypoint: "./scripts/start_and_monitor_fuzzing.sh"
+  entrypoint: "./script.sh"

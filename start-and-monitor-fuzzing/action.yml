@@ -27,5 +27,5 @@ inputs:
     default: "grpc-api.cloud.code-intelligence.com:443"
 runs:
   using: "docker"
-  image: "cifuzz/cictl"
+  image: "docker://cifuzz/cictl"
   entrypoint: "./script.sh"

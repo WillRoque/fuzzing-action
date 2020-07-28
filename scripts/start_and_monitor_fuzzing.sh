@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh
 
 printenv
 
@@ -13,10 +13,10 @@ echo "timeout: ${INPUT_TIMEOUT}"
 echo "fuzzing_server_address: ${INPUT_FUZZING_SERVER_ADDRESS}"
 
 # Login with Cognito.
-./cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"
+cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"
 
 # Start fuzzing and monitor it until it crashes or reaches the timeout.
-./cictl start_and_monitor_fuzzing \
+cictl start_and_monitor_fuzzing \
   --duration="${INPUT_TIMEOUT}" \
   --daemon_listen_address="${FUZZER_DAEMON_ADDRESS}" \
   --project_name="${PROJECT_NAME}" \

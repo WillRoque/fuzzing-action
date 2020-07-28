@@ -28,5 +28,5 @@ inputs:
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl"
-  pre-entrypoint: 'cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"'
+  pre-entrypoint: 'which cictl && ls && cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"'
   entrypoint: 'cictl start_and_monitor_fuzzing --duration="${INPUT_TIMEOUT}" --daemon_listen_address="${FUZZER_DAEMON_ADDRESS}" --project_name="${PROJECT_NAME}" --campaign_name="fuzz_api_DoStuff" --cloud_report_recipient_email="${REPORT_EMAIL}"'

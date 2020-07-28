@@ -1,19 +1,31 @@
 # action.yml
-name: "Hello World"
-description: "Greet someone and record the time"
+name: "Fuzz"
+description: "Fuzz a Test Collection until it crashes or reaches the timeout"
 inputs:
-  whoToGreet: # id of input
-    description: "Who to greet"
+  cognito_user:
+    description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
     required: true
-    default: "World"
-outputs:
-  time: # id of output
-    description: "The time we greeted you"
+  cognito_password:
+    description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
+    required: true
+  project:
+    description: "Name of the project"
+    required: true
+  test_collection:
+    description: "Name of the Test Collection in the specified project"
+    required: true
+  report_email:
+    description: "E-mail to receive crash reports"
+    required: false
+  timeout:
+    description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
+    required: false
+    default: 300
+  fuzzing_server_address:
+    description: "URL of Code-Intelligence's gRPC server for fuzzing"
+    required: false
+    default: "grpc-api.cloud.code-intelligence.com:443"
 runs:
   using: "docker"
   image: "cifuzz/cictl"
-  entrypoint: "./hello.sh"
-  env:
-    WHO_TO_GREET: ${{ inputs.whoToGreet }}
-  args:
-    - ${{ inputs.whoToGreet }}
+  entrypoint: "./scripts/start_and_monitor_fuzzing.sh"

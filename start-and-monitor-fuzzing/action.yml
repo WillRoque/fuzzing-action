@@ -1,4 +1,3 @@
-# action.yml
 name: "Fuzz"
 description: "Fuzz a Test Collection until it crashes or reaches the timeout"
 inputs:
@@ -28,4 +27,4 @@ inputs:
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl"
-  entrypoint: "start_and_monitor_fuzzing.sh"
+  entrypoint: 'cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"'

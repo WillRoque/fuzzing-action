@@ -29,8 +29,8 @@ runs:
   image: "docker://cifuzz/cictl"
   entrypoint: "cictl"
   args:
-    - "login"
-    - "-u"
-    - ${{ inputs.codnigo_user }}
-    - "-p"
-    - ${{ inputs.codnigo_password }}
+    - login
+    - -u
+    - ${{ inputs.cognito_user }}
+    - -p
+    - ${{ inputs.cognito_password }}

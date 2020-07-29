@@ -27,4 +27,10 @@ inputs:
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl"
-  entrypoint: '/bin/sh -c cictl login -u "${INPUT_COGNITO_USER}" -p "${INPUT_COGNITO_PASSWORD}"'
+  entrypoint: "cictl"
+  args:
+    - "login"
+    - "-u"
+    - ${{ inputs.codnigo_user }}
+    - "-p"
+    - ${{ inputs.codnigo_password }}

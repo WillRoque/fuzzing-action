@@ -1,5 +1,5 @@
-name: "Fuzz"
-description: "Fuzz a Test Collection until it crashes or reaches the timeout"
+name: "Start Fuzzing"
+description: "Start fuzzing a Test Collection"
 inputs:
   cognito_user:
     description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
@@ -16,21 +16,11 @@ inputs:
   report_email:
     description: "E-mail to receive crash reports"
     required: false
-  timeout:
-    description: "Timeout (in seconds) to monitor the fuzzing. If no crash was found when it times out, the action is considered successful."
-    required: false
-    default: 300
   fuzzing_server_address:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
     default: "grpc-api.cloud.code-intelligence.com:443"
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl"
-  entrypoint: "cictl"
-  args:
-    - login
-    - -u
-    - ${{ inputs.cognito_user }}
-    - -p
-    - ${{ inputs.cognito_password }}
+  image: "docker://cifuzz/cictl:2.14-alpha"
+  entrypoint: "start_fuzzing.sh"

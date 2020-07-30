@@ -1,6 +1,12 @@
 name: "Monitor Fuzzing"
 description: "Monitor a Test Collection Run until it crashes or reaches the timeout"
 inputs:
+  cognito_user:
+    description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
+    required: true
+  cognito_password:
+    description: "Cognito credentials to authenticate with Code-Intelligence's fuzzing server"
+    required: true
   project:
     description: "Name of the project"
     required: true
@@ -18,14 +24,4 @@ inputs:
 runs:
   using: "docker"
   image: "docker://cifuzz/cictl:2.14-alpha"
-  entrypoint: "cictl"
-  args:
-    - monitor_campaign_run
-    - --project_name
-    - ${{ inputs.project }}
-    - --campaign_run_name
-    - ${{ inputs.test_collection_run }}
-    - --duration
-    - ${{ inputs.timeout }}
-    - --daemon_listen_address
-    - ${{ inputs.fuzzing_server_address }}
+  entrypoint: "monitor_fuzzing.sh"

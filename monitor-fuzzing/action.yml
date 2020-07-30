@@ -1,5 +1,5 @@
 name: "Monitor Fuzzing"
-description: "Fuzz a Test Collection until it crashes or reaches the timeout"
+description: "Monitor a Test Collection Run until it crashes or reaches the timeout"
 inputs:
   project:
     description: "Name of the project"

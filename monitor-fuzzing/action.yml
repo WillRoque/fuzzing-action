@@ -27,3 +27,5 @@ runs:
     - ${{ inputs.test_collection_run }}
     - --duration
     - ${{ inputs.timeout }}
+    - --daemon_listen_address
+    - ${{ inputs.fuzzing_server_address }}

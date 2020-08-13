@@ -1,6 +1,5 @@
-const core = require("@actions/core");
-const { execSync } = require("child_process");
-const { GitHub, context } = require("@actions/github");
+import core from "@actions/core"
+import { GitHub, context } from "@actions/github"
 
 const main = async () => {
     const githubToken = core.getInput("github-token");

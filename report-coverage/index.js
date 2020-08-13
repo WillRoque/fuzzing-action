@@ -1,7 +1,7 @@
 import core from "@actions/core"
 import { GitHub, context } from "@actions/github"
 
-const main = async () => {
+async function main() {
     const githubToken = core.getInput("github-token");
     const githubClient = new GitHub(githubToken);
 
@@ -23,6 +23,6 @@ const main = async () => {
         issue_number: context.payload.pull_request.number,
         body: commentBody,
     });
-};
+}
 
 main().catch(err => core.setFailed(err.message));

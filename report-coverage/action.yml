@@ -1,0 +1,9 @@
+name: "Display Code Coverage"
+description: "Display Code Coverage In Pull Request Comment"
+inputs:
+  github-token:
+    description: "Github token"
+    required: true
+runs:
+  using: "node12"
+  main: "index.js"

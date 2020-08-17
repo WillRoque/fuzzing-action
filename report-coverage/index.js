@@ -29,11 +29,16 @@ async function main() {
 
 function readCoverageFiles(covDir) {
   let covDataArr = [];
+  console.log("covDir", covDir)
   fs.readdirSync(covDir).forEach((file) => {
+    console.log("file", file)
     const absPath = path.join(covDir, file);
+    console.log("absPath", absPath)
     const rawData = fs.readFileSync(absPath);
+    console.log("rawData", rawData)
     covDataArr.push(JSON.parse(rawData));
   });
+  console.log("covDataArr", covDataArr)
   return covDataArr;
 }
 

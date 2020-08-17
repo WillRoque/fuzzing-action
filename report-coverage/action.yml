@@ -1,8 +1,11 @@
-name: "Display Code Coverage"
-description: "Display Code Coverage In Pull Request Comment"
+name: "Report Code Coverage"
+description: "Report Code Coverage In Pull Request Comment"
 inputs:
-  github-token:
+  github_token:
     description: "Github token"
+    required: true
+  coverage_dir:
+    description: "Directory that contains (only) the files with coverage information"
     required: true
 runs:
   using: "node12"

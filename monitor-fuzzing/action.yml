@@ -10,6 +10,9 @@ inputs:
   project:
     description: "Name of the project"
     required: true
+  test_collection:
+    description: "Name of the Test Collection in the specified project"
+    required: true
   test_collection_run:
     description: "Name of the Test Collection Run"
     required: true

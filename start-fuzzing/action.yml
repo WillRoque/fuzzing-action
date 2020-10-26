@@ -20,7 +20,10 @@ inputs:
     description: "URL of Code-Intelligence's gRPC server for fuzzing"
     required: false
     default: "grpc-api.cloud.code-intelligence.com:443"
+  git_branch:
+    description: "Git branch"
+    required: false
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:2.15-alpha"
+  image: "docker://cifuzz/cictl:dev"
   entrypoint: "start_fuzzing.sh"

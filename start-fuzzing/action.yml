@@ -25,5 +25,5 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://cifuzz/cictl:dev"
+  image: "docker://gcr.io/code-intelligence/cictl:test"
   entrypoint: "start_fuzzing.sh"
